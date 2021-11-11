@@ -1,0 +1,69 @@
+<html>
+    <title>
+        Amazon Cellphone Sentimental Review Analysis</title>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/index12.css')}}">
+            <style>
+                body{
+                    background: #acb6ea;/*fallback for old browsers*/
+                    background: -webkit-linear-gradient(to right,#df1692,#acb6ea);/*Chrome 10-25,safari 5.1-6*/
+                    background:linear-gradient(to right,#df1692,#acb6ea);/* W3C,IE 0+/ Edge,Firefox 16+,Chrome 26+*/
+
+                }
+                div{
+                    background-color: white;
+
+                    border-radius: 16px;
+                    margin: auto;
+                    height: 396px;
+                    width: 404px;
+                    padding: 40px;
+                    box-shadow: 20px 20px 10px #15141569;
+                }
+                table,tr,td{
+                    padding:0.5px;
+                    /*border-spacing: 10px;*/
+                    font-size: 20px;
+                    margin-left: 120px;
+                    /*border: 5px solid black;*/
+                }
+            </style>
+
+        </head>
+        <body class="body1">
+            <h1 style="color:white;font-size:30px;text-align:center;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Amazon Cell Phone Sentiment Analysis</h1>
+            <div>
+            <p  style="font-size:25px;text-align:center;">Type your Review here</p>
+            <form action="/tpredict" method="POST"style="padding: 30px;">
+            <p style="text-align:center;padding: 30px;"><input type="text" size="33" placeholder="Enter the review" name="review" id=rcorners1 style="padding: 9px;border-radius: 8px;"></p>
+            <table >
+             <tr>
+                 <td colspan="2" style="text-align:center;"><button class="button5" type="submit" name="predict" style="text-align:center;width: 102px; background:linear-gradient(to right,#df1692,#acb6ea);
+                    border-radius: 30px;  padding: 10px;"><i>Predict</i></button></td>
+             </tr>
+             <tr>
+                 <td colspan="2" style="text-align:center;"><b style="font-size: medium;">{{ypred}}</b></td>
+
+             </tr>
+
+            </table>
+
+            </form>
+        </div>
+            <p>
+                
+                {% block content %}
+                   {% if ypred == "Positive Review" %}
+                      
+                  
+                   {% else %}
+                      {% if ypred == "Negative Review" %}
+                      {% endif %}
+                   {% endif %}
+                {% endblock content %}
+                
+            </p>
+            
+
+        </body>
+</html>
